@@ -1,49 +1,48 @@
-# Akash Client Installation
+# Install Akash Suite
 
 The Akash Suite is composed of a full node `akashd` and the client `akashctl`. The full node `akashd` is the tendermint-based blockchain node that implements the decentralized exchange. `akashctl` is the client used to access the exchange and network in general.
 
-{% tabs %} {% tab title="MacOS" %}
-
-### MacOS
+{% tabs %}
+{% tab title="MacOS" %}
+## MacOS
 
 The simplest way to install is by using [homebrew](https://brew.sh). If you do not have homebrew, you can install homebrew using:
 
-```shell
+```text
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 Install `akashctl` client and `akashd` daemon using homebrew:
 
-```shell
+```text
 brew install ovrclk/tap/akash
 ```
 
 Once installed, verify the installation by running `akashctl version`.
 
-
 Alternatively, you can manually download the [binaries](https://github.com/ovrclk/akash/releases/download/v0.8.1/akash_0.8.1_darwin_amd64.zip) from the [releases page](https://github.com/ovrclk/akash/releases). The latest release is `0.8.1` as of writing of this document, please make sure to check the releases page for the latest version. The final step is to make sure that the akash binary is available on the `PATH`.[This page](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix) contains instructions for setting the PATH on MacOS.
+{% endtab %}
 
-{% endtab %} {% tab title="Linux" %}
-
-### Linux
+{% tab title="Linux" %}
+## Linux
 
 Download the [linux archive](https://github.com/ovrclk/akash/releases/download/v0.8.1/akash_0.8.1_linux_amd64.zip) from the [release page](https://github.com/ovrclk/akash/releases).
 
 Alternatively, install the latest version via [`godownloader`](https://github.com/goreleaser/godownloader) with:
 
-```sh
+```bash
 curl https://raw.githubusercontent.com/ovrclk/akash/master/godownloader.sh | sh
 ```
 
 The final step is to make sure that the akash binaries are available in your shell `PATH`.[This page](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix) contains instructions for setting the PATH on Linux.
+{% endtab %}
+{% endtabs %}
 
-{% endtab %} {% endtabs %}
-
-### Others \(From Source\)
+## Others \(From Source\)
 
 Installing Akash suite from source
 
-```shell
+```text
 $ go get -d github.com/ovrclk/akash
 $ cd $GOPATH/src/github.com/ovrclk/akash
 $ MAINNET=true git checkout v0.8.1
@@ -58,3 +57,4 @@ Most golang libraries will be installed via `go mod`, however the following pack
 * [mockery](https://github.com/vektra/mockery): Mock generator.
 
 Once you have the dependencies properly setup, download and build `akashctl` and `akashd` using `make install`
+

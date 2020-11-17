@@ -3,39 +3,46 @@
 * [Introduction](README.md)
 
 ## Overview
-* [What is Akash?](overview/README.md)
+
+* [What is Akash?](overview/overview.md)
 
 ## Wallet Guides
-* [Using Lunie Web Wallet and Ledger](guides/wallet/lunie.md)
-* [Using CLI](guides/wallet/cli.md)
+
+* [Using Lunie Web Wallet and Ledger](wallet-guides/lunie.md)
+* [Using CLI](wallet-guides/cli.md)
 
 ## Validator Guides
-* [Validators Overview](guides/validators/overview.md)
-* [Running a Local Node](guides/validators/local.md)
-* [Joining the Mainnet](guides/create-a-testnet-validator.md)
-  * [Systemd Configuration](guides/systemd.md)
+
+* [Validators Overview](validator-guides/overview.md)
+* [Running a Local Node](validator-guides/local.md)
+* [Joining the Mainnet](validator-guides/create-a-testnet-validator/README.md)
+  * [Systemd Configuration](validator-guides/create-a-testnet-validator/systemd.md)
 
 ## Provider Guides
-* [Running a Provider Node](providers/kube/README.md)
+
+* [Running a Provider Node](provider-guides/kube.md)
 
 ## Deployment Guides
-* [Deploy a Simple Web App](guides/deploy/web.md)
+
+* [Deploy a Simple Web App](deployment-guides/web.md)
 
 ## Akashian Challenge
-* [The Challenge](akashian/README.md)
-* [Phase 1](akashian/phase1.md)
-  * [Centauri 2 Validator Setup](akashian/centauri-2.md)
-* [Phase 2](akashian/phase2.md)
-  * [Network Configuration](akashian/phase2-network.md)
+
+* [The Challenge](akashian-challenge/akashian.md)
+* [Phase 1](akashian-challenge/phase1/README.md)
+  * [Centauri 2 Validator Setup](akashian-challenge/phase1/centauri-2.md)
+* [Phase 2](akashian-challenge/phase2/README.md)
+  * [Network Configuration](akashian-challenge/phase2/phase2-network.md)
 
 ## Usage
-* [Install Akash Suite](guides/install.md)
-* [Stack Definition Language](sdl/README.md)
+
+* [Install Akash Suite](usage/install.md)
+* [Stack Definition Language](usage/sdl.md)
 * [Akash Client](usage/cli/README.md)
   * [Common Commands](usage/cli/general-commands.md)
   * [Run Light Client](usage/cli/rest-server.md)
   * [Manage keys](usage/cli/keys.md)
-  * [Manage deployments](usage/cli/deployments.md)
+  * [Manage deployments](usage/cli/manage-deployments.md)
   * [Service logs](usage/cli/logs.md)
   * [Monitor marketplace](usage/cli/marketplace.md)
   * [Manage provider](usage/cli/provider.md)
@@ -45,5 +52,7 @@
   * [Print Akash version](usage/cli/version.md)
 
 ## Resources
+
 * [REST API Spec](http://lcd.akash.forbole.com/)
 * [SDK API Reference](https://godoc.org/github.com/ovrclk/akash)
+

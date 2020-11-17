@@ -1,4 +1,4 @@
-# Check Version
+# Print Akash version
 
 **Usage**
 
@@ -28,3 +28,4 @@ Global Flags:
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
 ```
+

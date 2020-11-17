@@ -1,20 +1,22 @@
-In this guide, we'll generate a wallet address on your workstation 
+# Using CLI
+
+In this guide, we'll generate a wallet address on your workstation
 
 ## Before We Begin
 
-Make sure to have Akash client installed on your workstation, check [install guide](/guides/install.md) for instructions.
+Make sure to have Akash client installed on your workstation, check [install guide](../usage/install.md) for instructions.
 
 ## Derive a New Key Locally
 
-Derive a new private key and encrypt to disk using the command `keys add`, to generate a key with the named `alice`, run the below (please make sure to replace alice with a name of your choice):
+Derive a new private key and encrypt to disk using the command `keys add`, to generate a key with the named `alice`, run the below \(please make sure to replace alice with a name of your choice\):
 
-```sh
+```bash
 akashctl keys add alice
 ```
 
 You'll see a response similar to below:
 
-```
+```text
 - name: alice
   type: local
   address: akash1cz87pqkad72gggrv3t7y2x9z56h9gqghlnx3j3
@@ -37,13 +39,13 @@ In the above example, your new Akash address is `akash1cz87pqkad72gggrv3t7y2x9z5
 
 To derive a key and store it on the ledger, add the `--ledger` flag `keys add` command. For example:
 
-```sh
+```bash
 akashctl keys add alice --ledger
 ```
 
 Will produce a similar output to:
 
-```
+```text
 - name: alice
   type: ledger
   address: akash1dt6wukc53dangle8qz7xjc792u0yrdc3esjlsp
@@ -57,13 +59,13 @@ Will produce a similar output to:
 
 The command to recover your key is:
 
-```
+```text
 akashctl keys add <name> --recover
 ```
 
 For example, `akashctl keys add alice --recover` will prompt the user to input a bip39 mnemonic and looks similar to:
 
-```
+```text
 > Enter your bip39 mnemonic
 diagram pony police cigar curious miracle multiply tiger salmon trade like month oven custom seven assume rail valid abuse forest mountain submit text print
 
@@ -80,13 +82,13 @@ diagram pony police cigar curious miracle multiply tiger salmon trade like month
 
 The command to export your private key is `keys export`. For example:
 
-```sh
+```bash
 akashctl keys export alice
 ```
 
 will output a response similar to:
 
-```
+```text
 Enter passphrase to decrypt your key:
 Enter passphrase to encrypt the exported key:
 -----BEGIN TENDERMINT PRIVATE KEY-----
@@ -99,3 +101,4 @@ Hdv20eQY/mXdYD4a/zd6QPdBDkMHyyl2qY6Tun/UgQviUUyyTvzuVQgrrZ6tilRI
 =IGRD
 -----END TENDERMINT PRIVATE KEY-----
 ```
+

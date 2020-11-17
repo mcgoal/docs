@@ -1,16 +1,16 @@
-# General Commands
+# Common Commands
 
 ## Start Akash Light Client
 
 **Usage**
 
-```shell
+```text
 akashctl rest-server [flags]
 ```
 
 **Example**
 
-```
+```text
 $ akashctl rest-server --node tcp://localhost:26657 --laddr tcp://127.0.0.1:1319
 I[2020-02-27|16:25:57.343] Starting application REST service (chain-id: "")...  module=rest-server 
 I[2020-02-27|16:25:57.343] Starting RPC HTTP server on 127.0.0.1:1319   module=rest-server
@@ -53,13 +53,13 @@ Sign and send tokens to other account.
 
 **Usage**
 
-```
+```text
 akashctl tx send [from_key_or_address] [to_address] [amount] [flags]
 ```
 
- **Example**
+**Example**
 
-```
+```text
 $ akashctl tx send bob akash12wlzqjelrt87r3u56ps4m8lk7wavx5m5jg9cax 10000000uakt -y -o json
 
 {"height":"0","txhash":"116ED246AFF9F9B58036AECAA5EFE81AA7A788CC625CC2A4ADAFC68378834413","raw_log":"[]"}
@@ -67,7 +67,7 @@ $ akashctl tx send bob akash12wlzqjelrt87r3u56ps4m8lk7wavx5m5jg9cax 10000000uakt
 
 **More Info**
 
-```
+```text
 $ akashctl tx send -h
 Create and sign a send tx
 
@@ -106,13 +106,14 @@ Global Flags:
 Query for a transaction by hash in a committed block.
 
 **Usage**
-```
+
+```text
 $ akashctl query tx <txhash> -o json
 ```
 
 **Examples**
 
-```
+```text
 $ akashctl query tx 295A56A7B4DA7DE3266329981945307FF73ACFF1CCD319D1E1AE53DF16E0125E -o json
 
 {"height":"338","txhash":"295A56A7B4DA7DE3266329981945307FF73ACFF1CCD319D1E1AE53DF16E0125E","codespace":"staking","code":3,"raw_log":"validator does not exist: failed to execute message; message index: 0","gas_wanted":"200000","gas_used":"35496","tx":{"type":"cosmos-sdk/StdTx","value":{"msg":[{"type":"cosmos-sdk/MsgBeginRedelegate","value":{"delegator_address":"akash16q6s0tauc3cks5us7f57wds8c8lqg4jqs0qtaf","validator_src_address":"akashvaloper1qgjla78dk2yk2eh6dmjeejz6m374ykdtpgp92s","validator_dst_address":"akashvaloper16q6s0tauc3cks5us7f57wds8c8lqg4jq6dwddr","amount":{"denom":"uakt","amount":"10000"}}}],"fee":{"amount":[],"gas":"200000"},"signatures":[{"pub_key":{"type":"tendermint/PubKeySecp256k1","value":"A+hCkyWd4cWG0KD+GgCxHEOUzll1cl5VvoGgDvVIwF3E"},"signature":"XI1XhIXlSCPnQVHQamu+sbqiZxAxLM8OnXSF2gqNVkkpP1bi6Au3v8N4EUAaPrZGYigechb2ekt6MUEjrFWdgw=="}],"memo":""}},"timestamp":"2020-03-06T10:39:57Z"}
@@ -120,7 +121,7 @@ $ akashctl query tx 295A56A7B4DA7DE3266329981945307FF73ACFF1CCD319D1E1AE53DF16E0
 
 **More info**
 
-```
+```text
 $ akashctl query tx -h
 
 Usage:
@@ -138,19 +139,19 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-## Bond(Stake) Tokens
+## Bond\(Stake\) Tokens
 
 Delegate some tokens to validator i.e., bonding tokens.
 
 **Usage**
 
-```
+```text
 $ akashctl tx staking delegate <validator-address> <amount-with-denom> --from <from-account> -y -o json
 ```
 
 **Example**
 
-```
+```text
 $ akashctl tx staking delegate akashvaloper1qgjla78dk2yk2eh6dmjeejz6m374ykdtpgp92s 1000000uakt --from alice -y -o json
 
 {"height":"0","txhash":"F48C925F2F37766660D044DCAD0DC9A4CF51E454E184BC817EFD32ADA501ADD7","raw_log":"[]"}
@@ -158,7 +159,7 @@ $ akashctl tx staking delegate akashvaloper1qgjla78dk2yk2eh6dmjeejz6m374ykdtpgp9
 
 **More info**
 
-```
+```text
 $ akashctl tx staking delegate -h
 Delegate an amount of liquid coins to a validator from your wallet.
 
@@ -198,13 +199,13 @@ Redelegate some tokens from one validator to another.
 
 **Usage**
 
-```
+```text
 $ akashctl tx staking redelegate <src-validator-address> <dest-validator-address> <amount-with-denom> --from <from-account> -y -o json
 ```
 
 **Example**
 
-```
+```text
 $ akashctl tx staking redelegate akashvaloper1qgjla78dk2yk2eh6dmjeejz6m374ykdtpgp92s akashvaloper16q6s0tauc3cks5us7f57wds8c8lqg4jq6dwddr 1000000uakt --from alice -y -o json
 
 {"height":"0","txhash":"295A56A7B4DA7DE3266329981945307FF73ACFF1CCD319D1E1AE53DF16E0125E","raw_log":"[]"}
@@ -212,7 +213,7 @@ $ akashctl tx staking redelegate akashvaloper1qgjla78dk2yk2eh6dmjeejz6m374ykdtpg
 
 **More info**
 
-```
+```text
 $ akashctl tx staking redelegate -h
 Redelegate an amount of illiquid staking tokens from one validator to another.
 
@@ -249,24 +250,27 @@ Global Flags:
       --trace             print out full stack trace on errors
 ```
 
-## Undelegate(unbond) Tokens
+## Undelegate\(unbond\) Tokens
 
 Undelegate some tokens from validator i.e., unbonding tokens.
 
 **Usage**
-```
+
+```text
 $ akashctl tx staking unbond <validator-address> <amount-with-denom> --from <from-account> -y -o json
 ```
 
 **Example**
-```
+
+```text
 $ akashctl tx staking unbond akashvaloper1qgjla78dk2yk2eh6dmjeejz6m374ykdtpgp92s 1000000uakt --from alice -y -o json
 
 {"height":"0","txhash":"F48C925F2F37766660D044DCAD0DC9A4CF51E454E184BC817EFD32ADA501ADD7","raw_log":"[]"}
 ```
 
 **More info**
-```
+
+```text
 $ akashctl tx staking unbond -h
 Unbond an amount of bonded shares from a validator.
 
@@ -308,19 +312,22 @@ Global Flags:
 Withdraw rewards from validator
 
 **Usage**
-```
+
+```text
 $ akashctl tx distribution withdraw-rewards <validator-address> <amount-with-denom> --from <from-account> -y -o json
 ```
 
 **Example**
-```
+
+```text
 $ akashctl tx distribution withdraw-rewards akashvaloper16q6s0tauc3cks5us7f57wds8c8lqg4jq6dwddr --from alice -y -o json
 
 {"height":"0","txhash":"1BBB4A7A4D245C7534F366BABCE5BDD73776FB0430B3A241BFEEEF99445C52C3","raw_log":"[]"}
 ```
 
 **More info**
-```
+
+```text
 $ akashctl tx distribution withdraw-rewards -h
 Withdraw rewards from a given delegation address,
 and optionally withdraw validator commission if the delegation address given is a validator operator.
@@ -363,15 +370,18 @@ Global Flags:
 ```
 
 ## Query Rewards
+
 Query all rewards earned by a delegator, optionally restrict to rewards from a single validator.
 
 **Usage**
-```
+
+```text
 $ akashctl query distribution rewards <delegator-address> [<validator-address>] -o json
 ```
 
 **Examples**
-```
+
+```text
 $ akashctl query distribution rewards akash16q6s0tauc3cks5us7f57wds8c8lqg4jqs0qtaf akashvaloper16q6s0tauc3cks5us7f57wds8c8lqg4jq6dwddr -o json
 
 [{"denom":"uakt","amount":"69009.444000000000000000"}]
@@ -382,7 +392,8 @@ $ akashctl query distribution rewards akash16q6s0tauc3cks5us7f57wds8c8lqg4jqs0qt
 ```
 
 **More info**
-```
+
+```text
 $ akashctl query distribution rewards -h
 
 Usage:
@@ -404,22 +415,26 @@ Global Flags:
 ```
 
 ## Query Balance
+
 Query account balance of given account address.
 
 **Usage**
-```
+
+```text
 $ akashctl query account <account-address> -o json
 ```
 
 **Examples**
-```
+
+```text
 $ akashctl query account akash16q6s0tauc3cks5us7f57wds8c8lqg4jqs0qtaf -o json
 
 {"type":"cosmos-sdk/Account","value":{"address":"akash16q6s0tauc3cks5us7f57wds8c8lqg4jqs0qtaf","coins":[{"denom":"uakt","amount":"99870156179"}],"public_key":"akashpub1addwnpepq05y9ye9nhsutpks5rlp5q93r3pefnjew4e9u4d7sxsqaa2gcpwug9szhl2","account_number":3,"sequence":5}}
 ```
 
 **More info**
-```
+
+```text
 $ akashctl query account -h
 
 Usage:
@@ -445,12 +460,14 @@ Global Flags:
 Provide seed phrase to recover existing key instead of creating.
 
 **Usage**
-```
+
+```text
 $ akashctl keys add <key-name> --recover
 ```
 
 **Example**
-```
+
+```text
 $ akashctl keys add alice --recover
 > Enter your bip39 mnemonic
 close super rare vicious core supreme collect fatigue maid cupboard throw surge notable phrase brand actual high track stay visual afraid lot dizzy wedding
@@ -469,12 +486,14 @@ close super rare vicious core supreme collect fatigue maid cupboard throw surge 
 Export a private key from the local keybase in ASCII-armored encrypted format. Export key with entering new password.
 
 **Usage**
-```
+
+```text
 akashctl keys export <key-name>
 ```
 
 **Example**
-```
+
+```text
 $ akashctl keys export provider
 Enter passphrase to decrypt your key:
 Enter passphrase to encrypt the exported key:
@@ -494,12 +513,15 @@ VmSk+mQl2tpra7dHt2Dm2z4S2unH2kbjXaOZTK/9NGQsw3TSb6GkwBU7WizTCmN/
 Import a file with ASCII armored private key into the local keybase. Required key password to import key.
 
 **Usage**
-```
+
+```text
 $ akashctl keys import <key-name> <keyfile>
 ```
 
 **Example**
-```
+
+```text
 $ akashctl keys import provider key
 Enter passphrase to decrypt your key:
 ```
+

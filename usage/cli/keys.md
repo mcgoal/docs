@@ -1,22 +1,24 @@
-# Manage Keys
+# Manage keys
 
 Keys allows you to manage your local keystore for Akash. These keys may be in any format supported by go-crypto and can be used by light-clients, full nodes, or any other application that needs to sign with a private key.
 
 Keys allows you to manage your local keystore for tendermint.
 
-    These keys may be in any format supported by go-crypto and can be
-    used by light-clients, full nodes, or any other application that
-    needs to sign with a private key.
+```text
+These keys may be in any format supported by go-crypto and can be
+used by light-clients, full nodes, or any other application that
+needs to sign with a private key.
+```
 
 **Usage**
 
-```shell
+```text
 $  akashctl keys [command]
 ```
 
 **Example**
 
-```shell
+```text
 $ akashctl help keys
 
 Usage:
@@ -53,34 +55,23 @@ Use `akashctl keys` to create and manage your keys.
 
 | Command | Description |
 | :--- | :--- |
-| add  | Add an encrypted private key (either newly generated or recovered), encrypt it, and save to disk
-| delete | Delete the given keys
-| export | Export private keys
-| import | Import private keys into the local keybase
-| list | List all keys
-| migrate | Migrate keys from the legacy (db-based) Keybase
-| mnemonic | Compute the bip39 mnemonic for some input entropy
-| parse | Parse address from hex to bech32 and vice versa
-| show | Show key info for the given name
+| add | Add an encrypted private key \(either newly generated or recovered\), encrypt it, and save to disk |
+| delete | Delete the given keys |
+| export | Export private keys |
+| import | Import private keys into the local keybase |
+| list | List all keys |
+| migrate | Migrate keys from the legacy \(db-based\) Keybase |
+| mnemonic | Compute the bip39 mnemonic for some input entropy |
+| parse | Parse address from hex to bech32 and vice versa |
+| show | Show key info for the given name |
 
 ## add
 
-Derive a new private key and encrypt to disk.
-Optionally specify a BIP39 mnemonic, a BIP39 passphrase to further secure the mnemonic,
-and a bip32 HD path to derive a specific account. The key will be stored under the given name
-and encrypted with the given password. The only input that is required is the encryption password.
+Derive a new private key and encrypt to disk. Optionally specify a BIP39 mnemonic, a BIP39 passphrase to further secure the mnemonic, and a bip32 HD path to derive a specific account. The key will be stored under the given name and encrypted with the given password. The only input that is required is the encryption password.
 
-If run with -i, it will prompt the user for BIP44 path, BIP39 mnemonic, and passphrase.
-The flag --recover allows one to recover a key from a seed passphrase.
-If run with --dry-run, a key would be generated (or recovered) but not stored to the
-local keystore.
-Use the --pubkey flag to add arbitrary public keys to the keystore for constructing
-multisig transactions.
+If run with -i, it will prompt the user for BIP44 path, BIP39 mnemonic, and passphrase. The flag --recover allows one to recover a key from a seed passphrase. If run with --dry-run, a key would be generated \(or recovered\) but not stored to the local keystore. Use the --pubkey flag to add arbitrary public keys to the keystore for constructing multisig transactions.
 
-You can add a multisig key by passing the list of key names you want the public
-key to be composed of to the --multisig flag and the minimum number of signatures
-required through --multisig-threshold. The keys are sorted by address, unless
-the flag --nosort is set.
+You can add a multisig key by passing the list of key names you want the public key to be composed of to the --multisig flag and the minimum number of signatures required through --multisig-threshold. The keys are sorted by address, unless the flag --nosort is set.
 
 **Usage**
 
@@ -90,7 +81,7 @@ $ akashctl keys add <name> [flags]
 
 **Example**
 
-```shell
+```text
   $ akashctl keys add john -o json
 
   {
@@ -108,31 +99,29 @@ $ akashctl keys add <name> [flags]
 
 **Flags**
 
-| Short | Verbose | Type  | Description |
-| :--- | :--- | :--- | :--- | :--- |
-|     | --account     |uint32|            Account number for HD derivation
-|      |--algo        |string |              Key signing algorithm to generate keys for (default "secp256k1")
-|      |--dry-run      |       |      Perform action, but don't add key to local keystore
-|      |--hd-path     |string   |         Manual HD Path derivation (overrides BIP44 config)
-|  -h, |--help          |        |    help for add
-|      |--indent       |          |   Add indent to JSON response
-|      |--index       |uint32      |        Address index number for HD derivation
-|  -i, |--interactive|              | Interactively prompt user for BIP39 passphrase and mnemonic
-|      |--ledger    |                |Store a local reference to a private key on a Ledger device
-|      |--multisig |   strings        |  Construct and store a multisig public key (implies --pubkey)
-|      |--multisig-threshold |uint   |K out of N required signatures. For use in conjunction with --multisig (default 1)
-|      |--no-backup |                |Don't print out seed phrase (if others are watching the terminal)
-|      |--nosort   |                 |Keys passed to --multisig are taken in the order they're supplied
-|      |--pubkey  |     string        |     Parse a public key in bech32 format and save it to disk
-|      |--recover|                   |Provide seed phrase to recover existing key instead of creating
+| Short | Verbose | Type | Description |
+| :--- | :--- | :--- | :--- |
+|  | --account | uint32 | Account number for HD derivation |
+|  | --algo | string | Key signing algorithm to generate keys for \(default "secp256k1"\) |
+|  | --dry-run |  | Perform action, but don't add key to local keystore |
+|  | --hd-path | string | Manual HD Path derivation \(overrides BIP44 config\) |
+| -h, | --help |  | help for add |
+|  | --indent |  | Add indent to JSON response |
+|  | --index | uint32 | Address index number for HD derivation |
+| -i, | --interactive |  | Interactively prompt user for BIP39 passphrase and mnemonic |
+|  | --ledger |  | Store a local reference to a private key on a Ledger device |
+|  | --multisig | strings | Construct and store a multisig public key \(implies --pubkey\) |
+|  | --multisig-threshold | uint | K out of N required signatures. For use in conjunction with --multisig \(default 1\) |
+|  | --no-backup |  | Don't print out seed phrase \(if others are watching the terminal\) |
+|  | --nosort |  | Keys passed to --multisig are taken in the order they're supplied |
+|  | --pubkey | string | Parse a public key in bech32 format and save it to disk |
+|  | --recover |  | Provide seed phrase to recover existing key instead of creating |
 
 ## delete
 
 Delete keys from the Keybase backend.
 
-Note that removing offline or ledger keys will remove
-only the public key references stored locally, i.e.
-private keys stored in a ledger device cannot be deleted with the CLI.
+Note that removing offline or ledger keys will remove only the public key references stored locally, i.e. private keys stored in a ledger device cannot be deleted with the CLI.
 
 **Usage**
 
@@ -142,7 +131,7 @@ $ akashctl keys delete <name> [flags]
 
 **Example**
 
-```shell
+```text
   $ akashctl keys delete john 
 
   Key deleted forever (uh oh!)
@@ -156,11 +145,11 @@ $ akashctl keys delete <name> [flags]
 
 **Flags**
 
-| Short | Verbose   | Description |
+| Short | Verbose | Description |
 | :--- | :--- | :--- |
-| -f, |--force |  Remove the key unconditionally without asking for the passphrase. Deprecated.|
-| -h, |--help  |  help for delete |
-| -y, |--yes   |  Skip confirmation prompt when deleting offline or ledger key references |
+| -f, | --force | Remove the key unconditionally without asking for the passphrase. Deprecated. |
+| -h, | --help | help for delete |
+| -y, | --yes | Skip confirmation prompt when deleting offline or ledger key references |
 
 ## export
 
@@ -174,7 +163,7 @@ $ akashctl keys export <name> [flags]
 
 **Example**
 
-```shell
+```text
   $ akashctl keys export john
 
   Enter passphrase to decrypt your key:
@@ -198,11 +187,9 @@ $ akashctl keys export <name> [flags]
 
 **Flags**
 
-| Short | Verbose   | Description |
+| Short | Verbose | Description |
 | :--- | :--- | :--- |
-| -h, |--help |  help for export.|
-
-
+| -h, | --help | help for export. |
 
 ## import
 
@@ -216,7 +203,7 @@ $ akashctl keys import <name> <keyfile> [flags]
 
 **Example**
 
-```shell
+```text
   TODO
 ```
 
@@ -228,15 +215,13 @@ $ akashctl keys import <name> <keyfile> [flags]
 
 **Flags**
 
-| Short | Verbose   | Description |
+| Short | Verbose | Description |
 | :--- | :--- | :--- |
-| -h, |--help |  help for import.|
-
+| -h, | --help | help for import. |
 
 ## list
 
-Return a list of all public keys stored by this key manager
-along with their associated name and address.
+Return a list of all public keys stored by this key manager along with their associated name and address.
 
 **Usage**
 
@@ -246,7 +231,7 @@ $ akashctl keys list [flags]
 
 **Example**
 
-```shell
+```text
   $ akashctl keys list -o json
 
   [{
@@ -266,19 +251,15 @@ $ akashctl keys list [flags]
 
 **Flags**
 
-| Short | Verbose   | Description |
+| Short | Verbose | Description |
 | :--- | :--- | :--- |
-| -h, |--help |  help for list.|
-|     | --indent | Add indent to JSON response |
-| -n  | --list-names | List names only |
-
+| -h, | --help | help for list. |
+|  | --indent | Add indent to JSON response |
+| -n | --list-names | List names only |
 
 ## migrate
 
-Migrate key information from the legacy (db-based) Keybase to the new keyring-based Keybase.
-For each key material entry, the command will prompt if the key should be skipped or not. If the key
-is not to be skipped, the passphrase must be entered. The key will only be migrated if the passphrase
-is correct. Otherwise, the command will exit and migration must be repeated.
+Migrate key information from the legacy \(db-based\) Keybase to the new keyring-based Keybase. For each key material entry, the command will prompt if the key should be skipped or not. If the key is not to be skipped, the passphrase must be entered. The key will only be migrated if the passphrase is correct. Otherwise, the command will exit and migration must be repeated.
 
 It is recommended to run in 'dry-run' mode first to verify all key migration material.
 
@@ -290,17 +271,16 @@ $ akashctl keys migrate [flags]
 
 **Example**
 
-```shell
+```text
   TODO
 ```
 
 **Flags**
 
-| Short | Verbose   | Description |
+| Short | Verbose | Description |
 | :--- | :--- | :--- |
-| -h, |--help |  help for migrate.|
-|     | --dry-run | Run migration without actually persisting any changes to the new Keybase |
-
+| -h, | --help | help for migrate. |
+|  | --dry-run | Run migration without actually persisting any changes to the new Keybase |
 
 ## mnemonic
 
@@ -311,11 +291,12 @@ Create a bip39 mnemonic, sometimes called a seed phrase, by reading from the sys
 ```text
 $ akashctl keys mnemonic [flags]
 ```
+
 $ akashctl keys add alice
 
 **Example**
 
-```shell
+```text
   $ akashctl keys mnemonic
 
   pepper mosquito slab coral tornado taxi raw sheriff service tube brain search neither hire skin put vintage glance purity assume piano invite immune blame
@@ -323,16 +304,14 @@ $ akashctl keys add alice
 
 **Flags**
 
-| Short | Verbose   | Description |
+| Short | Verbose | Description |
 | :--- | :--- | :--- |
-| -h, |--help |  help for migrate.|
-|     | --unsafe-entropy | Prompt the user to supply their own entropy, instead of relying on the system |
-
+| -h, | --help | help for migrate. |
+|  | --unsafe-entropy | Prompt the user to supply their own entropy, instead of relying on the system |
 
 ## parse
 
-Convert and print to stdout key addresses and fingerprints from
-hexadecimal into bech32 cosmos prefixed format and vice versa.
+Convert and print to stdout key addresses and fingerprints from hexadecimal into bech32 cosmos prefixed format and vice versa.
 
 **Usage**
 
@@ -342,7 +321,7 @@ $ akashctl keys parse <hex-or-bech32-address> [flags]
 
 **Example**
 
-```shell
+```text
   $ akashctl keys parse akash1y8608rk8phlze8qtcchxue3cqf2wt8t6tqn8u2
 
   human: akash
@@ -351,17 +330,14 @@ $ akashctl keys parse <hex-or-bech32-address> [flags]
 
 **Flags**
 
-| Short | Verbose   | Description |
+| Short | Verbose | Description |
 | :--- | :--- | :--- |
-| -h, |--help |  help for parse.|
-|     | --indent | Indent JSON output |
-
+| -h, | --help | help for parse. |
+|  | --indent | Indent JSON output |
 
 ## show
 
-Return public details of a single local key. If multiple names are
-provided, then an ephemeral multisig key will be created under the name "multi"
-consisting of all the keys provided by name and multisig threshold.
+Return public details of a single local key. If multiple names are provided, then an ephemeral multisig key will be created under the name "multi" consisting of all the keys provided by name and multisig threshold.
 
 **Usage**
 
@@ -371,7 +347,7 @@ $ akashctl keys show [name [name...]] [flags]
 
 **Example**
 
-```shell
+```text
   $ akashctl keys show john -o json
 
   {
@@ -383,12 +359,13 @@ $ akashctl keys show [name [name...]] [flags]
 
 **Flags**
 
-| Short | Verbose   | Description |
-| :--- | :--- | :--- |
-|  -a, |--address                 |  Output the address only (overrides --output)
-|      |--bech string             |  The Bech32 prefix encoding for a key (acc|val|cons) (default "acc")
-|  -d, |--device                  |  Output the address in a ledger device
-|  -h, |--help                    |  help for show
-|      |--indent                  |  Add indent to JSON response
-|      |--multisig-threshold uint |  K out of N required signatures (default 1)
-|  -p, |--pubkey                  |  Output the public key only (overrides --output)
+| Short | Verbose | Description |  |  |
+| :--- | :--- | :--- | :--- | :--- |
+| -a, | --address | Output the address only \(overrides --output\) |  |  |
+|  | --bech string | The Bech32 prefix encoding for a key \(acc | val | cons\) \(default "acc"\) |
+| -d, | --device | Output the address in a ledger device |  |  |
+| -h, | --help | help for show |  |  |
+|  | --indent | Add indent to JSON response |  |  |
+|  | --multisig-threshold uint | K out of N required signatures \(default 1\) |  |  |
+| -p, | --pubkey | Output the public key only \(overrides --output\) |  |  |
+

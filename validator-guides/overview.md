@@ -1,4 +1,4 @@
-# Akash Validators Overview
+# Validators Overview
 
 The Akash Blockchain based on [Tendermint](https://docs.tendermint.com/master/introduction/what-is-tendermint.html) relies on a set of [validators](https://hub.cosmos.network/master/validators/validator-faq.html) to secure the network. The validators' role is to run a full-node and participate in consensus by broadcasting votes that contain cryptographic signatures signed by their private key. Validators commit new blocks in the blockchain and receive revenue in exchange for their work. They must also participate in governance by voting on proposals. Validators are weighted according to their total stake.
 
@@ -7,7 +7,6 @@ Validators running Akash Full nodes on the Mainnet are visible on Block Explorer
 * [Big Dipper](https://akash.bigdipper.live/validators)
 * [Aneka](https://akash.aneka.io/validators)
 * [Lunie](https://app.lunie.io/akash/validators)
-
 
 ## Set up a Website
 
@@ -65,3 +64,4 @@ Sentry nodes can be quickly spun up or change their IP addresses. Because the li
 It is expected that good operating procedures on that part of validators will completely mitigate these threats.
 
 For more on sentry node architecture, see [this](https://forum.cosmos.network/t/sentry-node-architecture-overview/454).
+

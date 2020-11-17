@@ -1,6 +1,6 @@
-# Running `akashd` under Systemd
+# Systemd Configuration
 
-First ensure that you have [created and configured your full node for the proper testnet](./join-the-testnet.md) and you haven't run `akashd start` yet.
+First ensure that you have [created and configured your full node for the proper testnet]() and you haven't run `akashd start` yet.
 
 Start by creating the following file and open it in your choice of editor:
 
@@ -12,7 +12,7 @@ Fill that file with the following valid `toml`:
 
 > NOTE: the `User`, `ExecStart` and `WorkingDirectory` will depend on your system and how you installed `akashd`.
 
-```toml
+```text
 # /etc/systemd/system/akashd.service
 [Unit]
 Description=Cosmos akash Node
@@ -40,3 +40,4 @@ sudo systemctl start akashd
 # then you can view the logs using journalctl
 journalctl -u akashd -f
 ```
+

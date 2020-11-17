@@ -1,35 +1,35 @@
-# Akash Incentivized Testnet
+# Running a Local Node
 
 This section contains instructions to run a Akash node locally in your workstation
 
 ## Before We Begin
 
-Make sure to have Akash client installed on your workstation, check [install guide](/guides/install.md) for instructions.
+Make sure to have Akash client installed on your workstation, check [install guide](../usage/install.md) for instructions.
 
 ## Initiating the Chain
 
 Initiating the chain by providing a moniker and chain id will generate a genesis file using the below command
 
-```sh
+```bash
 akashd init node0 --chain-id devnet
 ```
 
 The above command will create the necessary configurations under `$HOME/.akashd` with the below structure:
 
-```
+```text
 ├── config
-│   ├── app.toml
-│   ├── config.toml
-│   ├── genesis.json
-│   ├── node_key.json
-│   └── priv_validator_key.json
+│   ├── app.toml
+│   ├── config.toml
+│   ├── genesis.json
+│   ├── node_key.json
+│   └── priv_validator_key.json
 └── data
     └── priv_validator_state.json
 ```
 
 The Genesis file is generated under `$HOME/.akashd/config/genesis.json` will have a structure similar to:
 
-```json
+```javascript
 {
   "app_message": {
     "auth": {
@@ -132,7 +132,7 @@ The Genesis file is generated under `$HOME/.akashd/config/genesis.json` will hav
 
 ### Configure defaults
 
-```sh
+```bash
 akashctl config chain-id devnet 
 akashctl config output json
 akashctl config indent true
@@ -141,7 +141,7 @@ akashctl config trust-node true
 
 The above commands will customize the `akashctl` utility with configuration saved under `$HOME/.akashctl/config/config.toml` and looks similar to:
 
-```toml
+```text
 chain-id = "devnet"
 indent = true
 output = "json"
@@ -152,13 +152,13 @@ trust-node = true
 
 Generate a key using:
 
-```sh
+```bash
 akashctl keys add master
 ```
 
 Output looks similar to:
 
-```
+```text
 - name: master
   type: local
   address: akash14kauksr2wmtsg3jd6kct48kejrmdstx4g46tv0
@@ -176,7 +176,7 @@ average move castle eager beauty focus sugar gesture method biology brick lonely
 
 Add 100M tokens to genesis Master account
 
-```sh
+```bash
 akashd add-genesis-account master 100000000uakt,100000000stake
 ```
 
@@ -184,25 +184,25 @@ akashd add-genesis-account master 100000000uakt,100000000stake
 
 Create a genesis transaction to create a validator.
 
-```sh
+```bash
 akashd gentx --name master
 ```
 
 Output will be similar to:
 
-```
+```text
 Genesis transaction written to "/Users/gosuri/.akashd/config/gentx/gentx-53f9f81b76c350196cfc816b8cdf001e199e88ee.json
 ```
 
 ## Collect The Genesis Transaction
 
-```sh
+```bash
 akashd collect-gentxs
 ```
 
 Output will be similar to:
 
-```json
+```javascript
 {
   "app_message": {
     "auth": {
@@ -374,26 +374,26 @@ Output will be similar to:
 
 Finally, validate the genesis file and start the akashctl node
 
-```sh
+```bash
 akashd validate-genesis
 ```
 
 You should see an output similar to:
 
-```
+```text
 validating genesis file at /Users/gosuri/.akashd/config/genesis.json
 File at /Users/gosuri/.akashd/config/genesis.json is a valid genesis file
 ```
 
 Start the node using:
 
-```sh
+```bash
 akashd start
 ```
 
 Output should be similar to:
 
-```
+```text
 I[2020-03-02|20:07:59.087] starting ABCI with Tendermint                module=main
 I[2020-03-02|20:08:04.376] processed active leases                      module=main count=0
 I[2020-03-02|20:08:04.376] Executed block                               module=state height=1 validTxs=0 invalidTxs=0
@@ -413,13 +413,13 @@ I[2020-03-02|20:08:19.581] Committed state                              module=s
 
 In a separate terminal, run the below to check status of the chain:
 
-```
+```text
 akashctl status
 ```
 
 You should see a response similar to:
 
-```json
+```javascript
 {
   "node_info": {
     "protocol_version": {
@@ -455,3 +455,4 @@ You should see a response similar to:
   }
 }
 ```
+

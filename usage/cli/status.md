@@ -33,12 +33,11 @@ $ akashctl status
             "type":"tendermint/PubKeyEd25519","value":"IupzNoyVFg24D7KloPBbqHvwf0AFNS4mt99kZOUzQ6w="},"voting_power":"100"
     }
 }
-
 ```
 
 > In the example above, the details are about node version and latest block on the network
 
-Use `akashctl status` to check status of a node (default "http://api.akashtest.net:80").
+Use `akashctl status` to check status of a node \(default "[http://api.akashtest.net:80](http://api.akashtest.net:80)"\).
 
 **Arguments**
 
@@ -52,7 +51,8 @@ No arguments.
 
 **Global Flags**
 
-| Short | Verbose | Argument | Required | Description |
-| :--- | :--- | :--- | :--- | :--- |
-| -d | --data | string | N | data directory (default "~/.akashctl") |
-| -m | --mode | string | N | output mode (interactive|shell|json) (default "interactive") |
+| Short | Verbose | Argument | Required | Description |  |  |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| -d | --data | string | N | data directory \(default "~/.akashctl"\) |  |  |
+| -m | --mode | string | N | output mode \(interactive | shell | json\) \(default "interactive"\) |
+

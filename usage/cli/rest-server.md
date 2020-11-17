@@ -1,22 +1,20 @@
-# Manage rest-server
+# Run Light Client
 
-Start LCD (light-client daemon), a local REST server
+Start LCD \(light-client daemon\), a local REST server
 
 **Usage**
 
-```shell
+```text
 $  akashctl rest-server [flags]
 ```
 
 **Example**
 
-```shell
-
+```text
 $ akashctl rest-server
 
 I[2020-03-12|15:18:05.969] Starting application REST service (chain-id: "my-chain")... module=rest-server 
 I[2020-03-12|15:18:05.969] Starting RPC HTTP server on 127.0.0.1:1317   module=rest-server
-
 ```
 
 ```text
@@ -38,5 +36,5 @@ Global Flags:
       --home string       directory for config and data (default "/home/ubuntu/.akashctl")
   -o, --output string     Output format (text|json) (default "text")
       --trace             print out full stack trace on errors
-
 ```
+

@@ -1,15 +1,17 @@
-### **Week 1: Capture the Orders**
+# Phase 2
+
+## **Week 1: Capture the Orders**
 
 The Akashian Challenge team will be creating orders continuously. This challenge asks users to explore how to operate as a provider by finding and bidding on leases. This can be accomplished by running the [provider daemon](https://github.com/ovrclk/akash/tree/master/provider), using `akashctl` and some `bash` scripting, or by building custom tooling. Contestants will be rewarded points during Week 1 for the following items:
 
-- Teams whose `Providers` have won the most number of `Orders`, then converted to `Leases`, put out by the Akash team
-- Teams whose `Providers` have placed the most number of `Bids` on `Orders`.
-- Bonus Category: Blog post detailing how winning provider bids works in the Akash system and some custom code to do so.
-- Bonus Category: Documentation or blog post detailing how the provider daemon works and how to operate it.
+* Teams whose `Providers` have won the most number of `Orders`, then converted to `Leases`, put out by the Akash team
+* Teams whose `Providers` have placed the most number of `Bids` on `Orders`.
+* Bonus Category: Blog post detailing how winning provider bids works in the Akash system and some custom code to do so.
+* Bonus Category: Documentation or blog post detailing how the provider daemon works and how to operate it.
 
-### Creation of Provider
+## Creation of Provider
 
-In order to participate in the Akash network as a Provider of compute users will need to register with the network and point to where their services are running (`host`) as well as providing additional metadata (`attributes`). This metadata can be things like the region or area the computers are running in as well as additional information about what that Provider is actually providing. To start creating your provider on the testnet, create a `provider.yaml` file that contains at least the fields below:
+In order to participate in the Akash network as a Provider of compute users will need to register with the network and point to where their services are running \(`host`\) as well as providing additional metadata \(`attributes`\). This metadata can be things like the region or area the computers are running in as well as additional information about what that Provider is actually providing. To start creating your provider on the testnet, create a `provider.yaml` file that contains at least the fields below:
 
 ```yaml
 host: http://localhost:8080
@@ -34,11 +36,11 @@ You can check to ensure your provider has been created successfully by running t
 $ akashctl q provider get $(akashctl keys show mykey -a)
 ```
 
-### Looking for Orders to Bid on
+## Looking for Orders to Bid on
 
 During the competition the Akash team will be submitting `Deployments` periodically. Those deployment requests will create `Orders` on the chain. They will be originating from the following addresses:
 
-```
+```text
 akash18u7rtrajhv3rutv3rd62f2rm53zugyzs6l62vj
 akash19v68tvrxkzvty935hh9skzsfa3z472xsjnfnff
 akash1d55wnn9ehrczjkul4ye9v68uepkc2s0025wcl5
@@ -58,7 +60,6 @@ You can query for outstanding orders in the DEX using the following CLI command:
 $ akashctl query market order list --state open
 ```
 
-
 The `id` field in the `Order` object returned above contains the information necessary to query the individual order. You can query the individual order as follows:
 
 ```bash
@@ -71,7 +72,7 @@ $ akashctl query market order get \
 
 The state of the order is encoded as an integer in the `state` field of this return. The following is a mapping from that `order-state` to what that state singifies:
 
-```
+```text
 // This order is open to recieve bids
 OrderOpen    = 1
 
@@ -82,7 +83,7 @@ OrderMatched = 2
 OrderClosed  = 3
 ```
 
-### Placing Bids on an Order
+## Placing Bids on an Order
 
 Once you have identified an `Order` from one of the Akash addresses above then you should submit a bid on that order. To bid on an order use the following command:
 
@@ -109,7 +110,7 @@ $ akashctl query market bid get \
 
 The state of the bid is encoded as an integer in the `state` field of this return. The following is a mapping from that `bid-state` what that state signifies:
 
-```
+```text
 // The bid is open an has not been won by any providers yet
 BidOpen    = 1
 
@@ -123,19 +124,19 @@ BidLost    = 3
 BidClosed  = 4
 ```
 
-### Running and configuring the provider services 
+## Running and configuring the provider services
 
 There is also a piece of infrastructure provided by the `Akash` team that will automate the process of bidding for your provider. This is called the Provider Services daemon. The Provider Services daemon listens via websocket on the tendermint RPC port for events coming from the chain. Any new orders that it hears will be automatically bid on. The easiest way to participate in Phase 2 is to run a properly configured provider daemon. Users are encoraged to make modifications to their provider daemon code in order to gain an advantage over other teams using this strategy. To run the provider daemon requires the following command:
 
 > NOTE: Ensure that you run this command with the same key you created the provider with, in addition ensure that the `akashctl config` has a reachable `node` configured.
 
-```
+```text
 $ akashctl provider run --from mykey
 ```
 
-### *Week 2: Chaos is a Ladder* 
+## _Week 2: Chaos is a Ladder_
 
-Week 2 is a test for throughput of the DEX. This will allow our team to identify performance bottlenecks in our code under realistic network conditions. The challenge builds on users’ provider experience from the Week 1: Capture the Orders challenge and encourages them to explore how to operate as a tenant on the network. 
+Week 2 is a test for throughput of the DEX. This will allow our team to identify performance bottlenecks in our code under realistic network conditions. The challenge builds on users’ provider experience from the Week 1: Capture the Orders challenge and encourages them to explore how to operate as a tenant on the network.
 
 Reward Opportunities:
 
@@ -146,10 +147,11 @@ Reward Opportunities:
 
 The only change this week is that instead of the Akash team submitting all of the orders, all testnet participants are also encouraged to submit their own deployments.The command to submit a deployment is:
 
-```
+```text
 akashctl tx deployment create [sdl-file] --from [deployment-key]
 ```
 
-There is [documentation on the SDL file format](/sdl/README.md) as well as some examples in the [`ovrclk/akash`](https://github.com/ovrclk/akash/blob/master/_docs/examples/provider/deployment.yaml) repository that will parse. Please note that the `profiles.placement.{name}.attributes` will determine which providers can bid on and win the leases.
+There is [documentation on the SDL file format](../../usage/sdl.md) as well as some examples in the [`ovrclk/akash`](https://github.com/ovrclk/akash/blob/master/_docs/examples/provider/deployment.yaml) repository that will parse. Please note that the `profiles.placement.{name}.attributes` will determine which providers can bid on and win the leases.
 
-> NOTE: Because this challenge encourages maximum concurrent access and high volumes of transactions, users should anticipate and prepare for some adverse network conditions. 
+> NOTE: Because this challenge encourages maximum concurrent access and high volumes of transactions, users should anticipate and prepare for some adverse network conditions.
+

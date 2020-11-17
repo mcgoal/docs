@@ -1,4 +1,4 @@
-# Akash Intro
+# What is Akash?
 
 ## Overview
 
@@ -59,9 +59,9 @@ Businesses and individual consumers will want and need to protect how they are p
 
 A _lease_ is created when a match occurs between a deployment and fulfillment order. The lease contains references to the deployment and fulfilment orders. Leases will be the binding agent in fulfilling a deployment.
 
-## DCS: Decentralized Cloud Standards 
+## DCS: Decentralized Cloud Standards
 
-Visit [DCS](https://dcs.akash.network) to learn about Akash system design. Decentralized Cloud Standards (DCSs) describe standards for the Akash Decentralized Cloud platform, including core protocol specifications, client APIs, and SDL standards. 
+Visit [DCS](https://dcs.akash.network) to learn about Akash system design. Decentralized Cloud Standards \(DCSs\) describe standards for the Akash Decentralized Cloud platform, including core protocol specifications, client APIs, and SDL standards.
 
 ## AKT: The Akash Network Token
 
@@ -78,3 +78,4 @@ Providers on Akash stake tokens to subsidize operating and capital expenditures.
 ### Reserve
 
 Fees on Akash can be settled using a multitude of currencies, however, the market order book uses Akash Token \(_AKT_\) as the reserve currency of the ecosystem. AKT provides a novel settlement option to lock in an exchange rate between AKT and the settlement currency. This way, providers and tenants are protected from the price volatility of AKT expected to result from its low liquidity. In this section, we also present a mechanism “Transaction Ordering using Consensus Weighted Median” to establish exchange rates without the need for an oracle.
+
